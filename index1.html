@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusDev - Website & Aplikasi Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <!-- AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap');
+
+        :root {
+            --primary: #0F172A;
+            --secondary: #2563EB;
+            --accent: #38BDF8;
+        }
+
+        .tail-container {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0F172A 0%, #1E2937 100%);
+        }
+
+        .blob {
+            animation: blob 7s infinite;
+        }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #38BDF8;
+            transform: translateY(-2px);
+        }
+
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .portfolio-card {
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: scale(1.03);
+        }
+
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Smooth scroll for whole page */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Logo image sizing */
+        .brand-logo {
+            width: 2.25rem;
+            height: 2.25rem;
+            object-fit: contain;
+            border-radius: 0.75rem;
+        }
+
+        /* Student card dashed highlight */
+        .student-card {
+            background: repeating-linear-gradient(135deg, rgba(56,189,248,0.06) 0px, rgba(56,189,248,0.06) 10px, transparent 10px, transparent 20px);
+        }
+
+        /* Floating WhatsApp button */
+        .fab-wa {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .fab-wa:hover {
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+<body class="tail-container bg-[#F8FAFC] text-[#1E293B]">
+
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-x-3">
+                    <img
+                        src="logo.png"
+                        alt="NexusDev Logo"
+                        class="w-12 h-12 rounded-full object-cover border-2 border-blue-500 shadow-md"
+                    />
+
+                    <div>
+                        <span class="heading-font text-2xl font-semibold tracking-tighter">
+                            NexusDev
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#home" onclick="navigateTo('home')" class="nav-link text-[#1E293B]">Home</a>
+                    <a href="#services" onclick="navigateTo('services')" class="nav-link text-[#1E293B]">Layanan</a>
+                    <a href="#portfolio" onclick="navigateTo('portfolio')" class="nav-link text-[#1E293B]">Portfolio</a>
+                    <a href="#pricing" onclick="navigateTo('pricing')" class="nav-link text-[#1E293B]">Harga</a>
+                    <a href="#about" onclick="navigateTo('about')" class="nav-link text-[#1E293B]">Tentang</a>
+                    <a href="#contact" onclick="navigateTo('contact')" class="nav-link text-[#1E293B]">Kontak</a>
+                </div>
+
+                <div class="flex items-center gap-x-4">
+                    <button onclick="showConsultModal()"
+                            class="bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-6 py-2.5 rounded-2xl text-sm font-semibold flex items-center gap-x-2 transition-all">
+                        <i class="fa-solid fa-headset"></i>
+                        Konsultasi Gratis
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="md:hidden text-2xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-6 py-6 flex flex-col gap-y-4 text-lg">
+                <a href="#home" onclick="navigateTo('home');toggleMobileMenu()" class="nav-link">Home</a>
+                <a href="#services" onclick="navigateTo('services');toggleMobileMenu()" class="nav-link">Layanan</a>
+                <a href="#portfolio" onclick="navigateTo('portfolio');toggleMobileMenu()" class="nav-link">Portfolio</a>
+                <a href="#pricing" onclick="navigateTo('pricing');toggleMobileMenu()" class="nav-link">Harga</a>
+                <a href="#about" onclick="navigateTo('about');toggleMobileMenu()" class="nav-link">Tentang Kami</a>
+                <a href="#contact" onclick="navigateTo('contact');toggleMobileMenu()" class="nav-link">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO / HOME -->
+    <section id="home" class="hero-bg text-white pt-20 pb-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8" data-aos="fade-right" data-aos-duration="900">
+                <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-3xl text-sm">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#38BDF8] opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-[#38BDF8]"></span>
+                    </span>
+                    Software House Indonesia
+                </div>
+
+                <h1 class="heading-font text-6xl md:text-7xl font-semibold leading-none tracking-tighter">
+                    Bangun Digital<br> Masa Depan Anda
+                </h1>
+
+                <p class="text-xl text-gray-300 max-w-md">
+                    Kami menciptakan website, aplikasi mobile, dan solusi AI modern yang membantu bisnis Anda tumbuh pesat.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="showConsultModal()"
+                            class="bg-[#2563EB] hover:bg-blue-700 px-8 py-4 rounded-3xl font-semibold text-lg flex items-center gap-x-3 transition-all">
+                        <i class="fa-solid fa-arrow-right"></i>
+                        Mulai Konsultasi Gratis
+                    </button>
+                    <a href="#portfolio" onclick="navigateTo('portfolio')"
+                       class="border border-white/70 hover:bg-white/10 px-8 py-4 rounded-3xl font-medium text-lg transition-all">
+                        Lihat Portfolio
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-x-8 text-sm">
+                    <div class="flex items-center gap-x-2">
+                        <i class="fa-solid fa-check text-[#38BDF8]"></i>
+                        <span>100+ Proyek</span>
+                    </div>
+                    <div class="flex items-center gap-x-2">
+                        <i class="fa-solid fa-check text-[#38BDF8]"></i>
+                        <span>Client Happy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual -->
+            <div class="relative hidden md:block" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+                <div class="absolute -left-10 top-12 w-72 h-72 bg-[#38BDF8] rounded-[4rem] blob opacity-20"></div>
+                <div class="absolute -right-6 bottom-8 w-80 h-80 bg-[#2563EB] rounded-[5rem] blob opacity-20" style="animation-delay: 2s"></div>
+
+                <!-- Mockups -->
+                <div class="relative z-10">
+                    <img src="https://picsum.photos/id/1015/600/420" alt="Laptop Mockup"
+                         class="shadow-2xl rounded-3xl border border-white/30">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-3 rounded-3xl shadow-xl">
+                        <img src="https://picsum.photos/id/201/280/380" alt="Phone"
+                             class="w-40 h-72 object-cover rounded-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="max-w-7xl mx-auto px-6 mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="0">
+                <div id="stat1" class="stat-number text-5xl font-semibold heading-font text-white">150</div>
+                <div class="text-gray-400 mt-1">Project Selesai</div>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div id="stat2" class="stat-number text-5xl font-semibold heading-font text-white">98</div>
+                <div class="text-gray-400 mt-1">% Client Puas</div>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <div id="stat3" class="stat-number text-5xl font-semibold heading-font text-white">24</div>
+                <div class="text-gray-400 mt-1">Jam Response</div>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                <div id="stat4" class="stat-number text-5xl font-semibold heading-font text-white">7</div>
+                <div class="text-gray-400 mt-1">Hari Rata-rata</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENT LOGOS -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-center text-sm uppercase tracking-widest text-gray-500 mb-8" data-aos="fade-up">Dipercaya oleh</p>
+            <div class="grid grid-cols-3 md:grid-cols-6 gap-8 opacity-60 grayscale" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex justify-center"><span class="text-3xl font-bold">Koperasi</span></div>
+                <div class="flex justify-center"><span class="text-3xl font-bold">Sekolah</span></div>
+                <div class="flex justify-center"><span class="text-3xl font-bold">UMKM</span></div>
+                <div class="flex justify-center"><span class="text-3xl font-bold">Startup</span></div>
+                <div class="flex justify-center"><span class="text-3xl font-bold">RS</span></div>
+                <div class="flex justify-center"><span class="text-3xl font-bold">Cafe</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES PREVIEW -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-3xl text-sm font-medium">LAYANAN KAMI</span>
+                <h2 class="heading-font text-5xl font-semibold mt-4">Solusi Digital Lengkap</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Website -->
+                <div onclick="navigateTo('services')" class="service-card cursor-pointer bg-white border border-gray-100 rounded-3xl p-8 hover:border-[#38BDF8]" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-14 h-14 bg-[#0F172A] text-white rounded-2xl flex items-center justify-center text-3xl mb-6">🌐</div>
+                    <h3 class="text-2xl font-semibold heading-font mb-3">Website Development</h3>
+                    <p class="text-gray-600">Landing page, company profile, e-commerce, dan portal informasi profesional.</p>
+                    <ul class="mt-6 space-y-2 text-sm">
+                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-emerald-500"></i> Responsive Design</li>
+                        <li class="flex items-center gap-x-2"><i class="fa-solid fa-check text-emerald-500"></i> SEO Optimized</li>
+                    </ul>
+                </div>
+
+                <!-- App -->
+                <div onclick="navigateTo('services')" class="service-card cursor-pointer bg-white border border-gray-100 rounded-3xl p-8 hover:border-[#38BDF8]" data-aos="fade-up" data-aos-delay="150">
+                    <div class="w-14 h-14 bg-[#2563EB] text-white rounded-2xl flex items-center justify-center text-3xl mb-6">📱</div>
+                    <h3 class="text-2xl font-semibold heading-font mb-3">Mobile &amp; Web App</h3>
+                    <p class="text-gray-600">Aplikasi Android/iOS, sistem manajemen, dashboard admin, dan custom ERP.</p>
+                </div>
+
+                <!-- AI -->
+                <div onclick="navigateTo('services')" class="service-card cursor-pointer bg-white border border-gray-100 rounded-3xl p-8 hover:border-[#38BDF8]" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-[#38BDF8] text-white rounded-2xl flex items-center justify-center text-3xl mb-6">🤖</div>
+                    <h3 class="text-2xl font-semibold heading-font mb-3">AI Solutions</h3>
+                    <p class="text-gray-600">Chatbot pintar, prediksi data, computer vision, dan integrasi AI modern.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="#services-full" onclick="navigateTo('services')"
+                   class="inline-flex items-center gap-x-3 text-[#2563EB] font-semibold hover:underline">
+                    Lihat Semua Layanan <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="py-24 bg-[#F8FAFC]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-5" data-aos="fade-right">
+                    <span class="text-sm font-medium text-blue-600">KENAPA NEXUSDEV?</span>
+                    <h2 class="heading-font text-5xl font-semibold leading-tight mt-3">Kami Bukan Hanya Vendor, Kami Partner Digital Anda</h2>
+                    <p class="mt-6 text-lg text-gray-600">Dengan pendekatan modern dan tim yang berpengalaman, kami menghadirkan solusi berkualitas tinggi dengan harga yang masuk akal.</p>
+                </div>
+
+                <div class="md:col-span-7 grid grid-cols-2 gap-6">
+                    <div class="bg-white p-8 rounded-3xl" data-aos="zoom-in" data-aos-delay="0">
+                        <i class="fa-solid fa-bolt text-4xl text-amber-500"></i>
+                        <h4 class="font-semibold mt-6">Performa Cepat</h4>
+                        <p class="text-sm text-gray-500 mt-2">Website dengan loading &lt; 1 detik</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fa-solid fa-mobile-screen text-4xl text-cyan-500"></i>
+                        <h4 class="font-semibold mt-6">Fully Responsive</h4>
+                        <p class="text-sm text-gray-500 mt-2">Tampilan sempurna di semua perangkat</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl" data-aos="zoom-in" data-aos-delay="200">
+                        <i class="fa-solid fa-shield-halved text-4xl text-emerald-500"></i>
+                        <h4 class="font-semibold mt-6">Aman &amp; Terlindungi</h4>
+                        <p class="text-sm text-gray-500 mt-2">SSL, backup rutin, proteksi serangan</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl" data-aos="zoom-in" data-aos-delay="300">
+                        <i class="fa-solid fa-chart-line text-4xl text-violet-500"></i>
+                        <h4 class="font-semibold mt-6">SEO Friendly</h4>
+                        <p class="text-sm text-gray-500 mt-2">Ranking lebih tinggi di Google</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="heading-font text-5xl font-semibold">Proses Kerja Kami</h2>
+                <p class="text-gray-600 mt-4 max-w-md mx-auto">Transparan, terstruktur, dan fokus pada hasil</p>
+            </div>
+
+            <div class="grid md:grid-cols-6 gap-4">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-16 h-16 mx-auto bg-[#0F172A] text-white rounded-2xl flex items-center justify-center text-3xl mb-4">1</div>
+                    <div class="font-medium">Konsultasi</div>
+                </div>
+                <div class="flex items-center justify-center text-4xl text-gray-300 hidden md:block">→</div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 mx-auto bg-[#2563EB] text-white rounded-2xl flex items-center justify-center text-3xl mb-4">2</div>
+                    <div class="font-medium">Desain</div>
+                </div>
+                <div class="flex items-center justify-center text-4xl text-gray-300 hidden md:block">→</div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 mx-auto bg-[#38BDF8] text-white rounded-2xl flex items-center justify-center text-3xl mb-4">3</div>
+                    <div class="font-medium">Development</div>
+                </div>
+                <div class="flex items-center justify-center text-4xl text-gray-300 hidden md:block">→</div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 mx-auto bg-emerald-600 text-white rounded-2xl flex items-center justify-center text-3xl mb-4">4</div>
+                    <div class="font-medium">Testing &amp; Launch</div>
+                </div>
+                <div class="flex items-center justify-center text-4xl text-gray-300 hidden md:block">→</div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 mx-auto bg-violet-600 text-white rounded-2xl flex items-center justify-center text-3xl mb-4">5</div>
+                    <div class="font-medium">Maintenance</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO PREVIEW -->
+    <section id="portfolio" class="py-24 bg-[#F8FAFC]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-12" data-aos="fade-up">
+                <div>
+                    <span class="uppercase text-sm tracking-widest">Portfolio</span>
+                    <h2 class="heading-font text-5xl font-semibold">Proyek Terbaru</h2>
+                </div>
+                <a href="#portfolio-full" onclick="navigateTo('portfolio')" class="text-[#2563EB] flex items-center gap-x-2 font-medium">
+                    Semua Proyek <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm" data-aos="fade-up" data-aos-delay="0">
+                    <img src="https://picsum.photos/id/1015/600/400" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full">Website</span>
+                        <h4 class="font-semibold mt-4">Koperasi Maju Bersama</h4>
+                        <p class="text-sm text-gray-500 mt-1">Company profile + sistem simpan pinjam</p>
+                        <button onclick="alert('Demo: koperasi.nexusdev.id (contoh)')"
+                                class="mt-6 w-full py-3 border border-gray-300 rounded-2xl text-sm font-medium hover:bg-gray-50">Lihat Demo</button>
+                    </div>
+                </div>
+
+                <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm" data-aos="fade-up" data-aos-delay="150">
+                    <img src="https://picsum.photos/id/201/600/400" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full">Web App</span>
+                        <h4 class="font-semibold mt-4">POS Cafe Rasa</h4>
+                        <p class="text-sm text-gray-500 mt-1">Point of Sale + inventory management</p>
+                        <button onclick="alert('Demo: pos.nexusdev.id')"
+                                class="mt-6 w-full py-3 border border-gray-300 rounded-2xl text-sm font-medium hover:bg-gray-50">Lihat Demo</button>
+                    </div>
+                </div>
+
+                <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://picsum.photos/id/237/600/400" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full">Mobile App</span>
+                        <h4 class="font-semibold mt-4">Absensi Siswa</h4>
+                        <p class="text-sm text-gray-500 mt-1">Aplikasi Flutter untuk sekolah</p>
+                        <button onclick="alert('Demo tersedia di Play Store')"
+                                class="mt-6 w-full py-3 border border-gray-300 rounded-2xl text-sm font-medium hover:bg-gray-50">Lihat Demo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="heading-font text-5xl font-semibold">Apa Kata Klien Kami</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-[#F8FAFC] p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="0">
+                    <div class="flex gap-x-1 text-yellow-400 mb-6">
+                        ★★★★☆
+                    </div>
+                    <p class="italic">"Website kami jadi jauh lebih profesional. Penjualan naik 3x lipat sejak launch!"</p>
+                    <div class="mt-8 flex items-center gap-x-4">
+                        <div class="w-11 h-11 bg-gray-300 rounded-2xl"></div>
+                        <div>
+                            <div class="font-semibold">Ibu Siti Rahayu</div>
+                            <div class="text-sm text-gray-500">Owner, Toko Batik Pekalongan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#F8FAFC] p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="150">
+                    <div class="flex gap-x-1 text-yellow-400 mb-6">
+                        ★★★★★
+                    </div>
+                    <p class="italic">"Sistem absensi sekolah kami sekarang sangat mudah digunakan. Tim NexusDev sangat responsif."</p>
+                    <div class="mt-8 flex items-center gap-x-4">
+                        <div class="w-11 h-11 bg-gray-300 rounded-2xl"></div>
+                        <div>
+                            <div class="font-semibold">Pak Ahmad Fauzi</div>
+                            <div class="text-sm text-gray-500">Kepala Sekolah SMAN 5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#F8FAFC] p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex gap-x-1 text-yellow-400 mb-6">
+                        ★★★★☆
+                    </div>
+                    <p class="italic">"Dashboard admin dan fitur AI-nya sangat membantu operasional kami sehari-hari."</p>
+                    <div class="mt-8 flex items-center gap-x-4">
+                        <div class="w-11 h-11 bg-gray-300 rounded-2xl"></div>
+                        <div>
+                            <div class="font-semibold">Dr. Rina Pratiwi</div>
+                            <div class="text-sm text-gray-500">Direktur, Klinik Sehat</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section class="py-20 bg-white border-t border-b">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-center text-gray-500 mb-8" data-aos="fade-up">Teknologi yang kami kuasai</p>
+            <div class="flex flex-wrap justify-center gap-x-12 gap-y-8 text-5xl opacity-75" data-aos="fade-up" data-aos-delay="100">
+                <i class="fa-brands fa-laravel text-red-600"></i>
+                <i class="fa-brands fa-react text-cyan-500"></i>
+                <span class="font-bold text-blue-600">F</span>
+                <i class="fa-brands fa-node-js text-green-600"></i>
+                <i class="fa-brands fa-python"></i>
+                <span class="font-bold">Tailwind</span>
+                <span class="font-bold text-blue-700">MySQL</span>
+            </div>
+        </div>
+    </section>
+
+<!-- PRICING FULL -->
+<section id="pricing" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <!-- Promo Banner -->
+        <div class="bg-gradient-to-r from-[#0F172A] to-[#2563EB] text-white rounded-3xl p-8 mb-16 text-center" data-aos="zoom-in">
+            <div class="inline-flex items-center gap-2 bg-white/20 px-6 py-2 rounded-full text-sm mb-4">
+                🎉 PROMO LAUNCHING
+            </div>
+            <h2 class="text-4xl font-bold heading-font">Diskon hingga 20% untuk 10 klien pertama!</h2>
+            <p class="mt-2 text-blue-100">Gratis konsultasi + revisi ekstra</p>
+        </div>
+
+        <div class="text-center mb-16" data-aos="fade-up">
+            <span class="uppercase tracking-widest text-blue-600 font-medium">Harga Transparan</span>
+            <h2 class="heading-font text-5xl font-semibold mt-3">Pilih Paket yang Sesuai</h2>
+        </div>
+
+        <!-- STUDENT PACKAGE -->
+        <div class="mb-20" data-aos="fade-up">
+            <div class="flex items-center gap-x-3 mb-8">
+                <h3 class="text-3xl font-semibold heading-font">🎓 Paket Pelajar &amp; Mahasiswa</h3>
+                <span class="text-xs bg-amber-100 text-amber-700 px-3 py-1 rounded-full font-semibold">Harga Spesial</span>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Portfolio Pelajar -->
+                <div class="student-card border-2 border-dashed border-amber-400 rounded-3xl p-8 relative">
+                    <div class="absolute -top-3 right-6 bg-amber-500 text-white text-xs px-4 py-1 rounded-full">TERLARIS PELAJAR</div>
+                    <div class="text-amber-600 font-semibold">PORTFOLIO PELAJAR</div>
+                    <div class="text-4xl font-bold heading-font mt-2">Rp149.000</div>
+                    <p class="text-xs text-gray-500 mt-1">Khusus pelajar/mahasiswa • tunjukkan KTM/KTS</p>
+                    <ul class="mt-8 space-y-3 text-sm">
+                        <li>✓ 1 Halaman Portfolio</li>
+                        <li>✓ Bio, Skill &amp; Proyek</li>
+                        <li>✓ Link Sosial Media</li>
+                        <li>✓ Responsive</li>
+                        <li>✓ Revisi 1x</li>
+                        <li>✓ Selesai 2-3 Hari</li>
+                    </ul>
+                    <button onclick="alert('Terima kasih! Paket Portfolio Pelajar dipilih. Siapkan KTM/KTS untuk verifikasi ya.')"
+                            class="mt-10 w-full py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-medium transition-all">
+                        Pesan Paket Pelajar
+                    </button>
+                </div>
+
+                <!-- CV/Portfolio Plus -->
+                <div class="student-card border-2 border-dashed border-amber-400 rounded-3xl p-8">
+                    <div class="text-amber-600 font-semibold">PORTFOLIO PLUS</div>
+                    <div class="text-4xl font-bold heading-font mt-2">Rp249.000</div>
+                    <p class="text-xs text-gray-500 mt-1">Untuk skripsi, magang, atau lamaran kerja</p>
+                    <ul class="mt-8 space-y-3 text-sm">
+                        <li>✓ Hingga 3 Halaman</li>
+                        <li>✓ Galeri Proyek/Karya</li>
+                        <li>✓ Download CV (PDF)</li>
+                        <li>✓ Form Kontak</li>
+                        <li>✓ Revisi 2x</li>
+                        <li>✓ Selesai 3-4 Hari</li>
+                    </ul>
+                    <button onclick="alert('Terima kasih! Paket Portfolio Plus dipilih. Siapkan KTM/KTS untuk verifikasi ya.')"
+                            class="mt-10 w-full py-4 bg-gray-900 hover:bg-gray-800 text-white rounded-2xl font-medium transition-all">
+                        Pesan Paket Ini
+                    </button>
+                </div>
+
+                <!-- Tugas Kelompok / Kelas -->
+                <div class="student-card border-2 border-dashed border-amber-400 rounded-3xl p-8">
+                    <div class="text-amber-600 font-semibold">PROYEK TUGAS KAMPUS</div>
+                    <div class="text-4xl font-bold heading-font mt-2">Mulai Rp349.000</div>
+                    <p class="text-xs text-gray-500 mt-1">Untuk tugas web/app kelompok, harga per kelompok</p>
+                    <ul class="mt-8 space-y-3 text-sm">
+                        <li>✓ Konsultasi Fitur Tugas</li>
+                        <li>✓ Bimbingan Dasar Kode</li>
+                        <li>✓ Deploy Gratis</li>
+                        <li>✓ Diskon Grup 5+ Orang</li>
+                    </ul>
+                    <button onclick="alert('Kami akan hubungi untuk detail proyek tugas kampusmu')"
+                            class="mt-10 w-full py-4 bg-gray-900 hover:bg-gray-800 text-white rounded-2xl font-medium transition-all">
+                        Konsultasi Tugas
+                    </button>
+                </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-6">
+                * Wajib verifikasi status pelajar/mahasiswa aktif (KTM/KTS/Surat Keterangan). Berlaku untuk keperluan non-komersial (portofolio, tugas, lamaran kerja/magang).
+            </p>
+        </div>
+
+        <!-- Website Packages -->
+        <h3 class="text-3xl font-semibold heading-font mb-8" data-aos="fade-up">🌐 Website Development</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+
+            <!-- Starter -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 hover:border-[#38BDF8] transition-all" data-aos="fade-up" data-aos-delay="0">
+                <div class="text-[#2563EB] font-semibold">STARTER</div>
+                <div class="text-4xl font-bold heading-font mt-2">Rp499.000</div>
+                <ul class="mt-8 space-y-3 text-sm">
+                    <li>✓ 1 Halaman</li>
+                    <li>✓ Responsive</li>
+                    <li>✓ WhatsApp Button</li>
+                    <li>✓ Contact Form</li>
+                    <li>✓ Basic SEO</li>
+                    <li>✓ Revisi 2x</li>
+                </ul>
+                <button onclick="alert('Terima kasih! Paket Starter dipilih.')"
+                        class="mt-10 w-full py-4 bg-gray-900 text-white rounded-2xl font-medium">
+                    Pesan Sekarang
+                </button>
+            </div>
+
+            <!-- Professional (Recommended) -->
+            <div class="bg-white border-2 border-[#2563EB] rounded-3xl p-8 relative" data-aos="fade-up" data-aos-delay="100">
+                <div class="absolute -top-3 right-6 bg-[#2563EB] text-white text-xs px-4 py-1 rounded-full">RECOMMENDED</div>
+                <div class="text-[#2563EB] font-semibold">PROFESSIONAL</div>
+                <div class="text-4xl font-bold heading-font mt-2">Rp1.499.000</div>
+                <ul class="mt-8 space-y-3 text-sm">
+                    <li>✓ Hingga 7 Halaman</li>
+                    <li>✓ Admin Panel</li>
+                    <li>✓ Galeri + Blog</li>
+                    <li>✓ Google Maps</li>
+                    <li>✓ SEO Dasar</li>
+                    <li>✓ Revisi 5x</li>
+                </ul>
+                <button onclick="alert('Terima kasih! Paket Professional dipilih.')"
+                        class="mt-10 w-full py-4 bg-[#2563EB] text-white rounded-2xl font-medium">
+                    Mulai Proyek
+                </button>
+            </div>
+
+            <!-- Business -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 hover:border-[#38BDF8] transition-all" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-[#2563EB] font-semibold">BUSINESS</div>
+                <div class="text-4xl font-bold heading-font mt-2">Rp2.499.000</div>
+                <ul class="mt-8 space-y-3 text-sm">
+                    <li>✓ Hingga 15 Halaman</li>
+                    <li>✓ Dashboard Admin</li>
+                    <li>✓ CMS + Database</li>
+                    <li>✓ Optimasi Kecepatan</li>
+                    <li>✓ Maintenance 1 Bulan Gratis</li>
+                </ul>
+                <button onclick="alert('Terima kasih!')"
+                        class="mt-10 w-full py-4 bg-gray-900 text-white rounded-2xl font-medium">
+                    Pilih Paket
+                </button>
+            </div>
+
+            <!-- Enterprise -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 hover:border-[#38BDF8] transition-all" data-aos="fade-up" data-aos-delay="300">
+                <div class="text-[#2563EB] font-semibold">ENTERPRISE</div>
+                <div class="text-4xl font-bold heading-font mt-2">Custom</div>
+                <ul class="mt-8 space-y-3 text-sm">
+                    <li>✓ Web Application</li>
+                    <li>✓ ERP / Sistem Internal</li>
+                    <li>✓ AI Integration</li>
+                    <li>✓ Multi User</li>
+                </ul>
+                <button onclick="alert('Kami akan hubungi untuk penawaran custom')"
+                        class="mt-10 w-full py-4 bg-gray-900 text-white rounded-2xl font-medium">
+                    Hubungi Kami
+                </button>
+            </div>
+        </div>
+
+        <!-- Add Ons -->
+        <h3 class="text-2xl font-semibold mb-6" data-aos="fade-up">🔧 Add-On</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-white p-5 rounded-2xl">Domain .com <span class="font-semibold block">Rp250.000</span></div>
+            <div class="bg-white p-5 rounded-2xl">Hosting /tahun <span class="font-semibold block">Rp350.000</span></div>
+            <div class="bg-white p-5 rounded-2xl">Email Bisnis <span class="font-semibold block">Rp150.000</span></div>
+            <div class="bg-white p-5 rounded-2xl">Payment Gateway <span class="font-semibold block">Rp500.000</span></div>
+        </div>
+
+        <div class="text-center text-sm text-gray-500">
+            Harga dapat disesuaikan sesuai kebutuhan • Domain, hosting, dan fitur tambahan dikenakan biaya terpisah.
+        </div>
+    </div>
+</section>
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-[#F8FAFC]">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+            <div data-aos="fade-right">
+                <h2 class="heading-font text-5xl font-semibold">Mari Bangun Sesuatu yang Hebat</h2>
+                <p class="mt-6 text-lg">Hubungi kami hari ini untuk konsultasi gratis.</p>
+
+                <div class="mt-12 space-y-6">
+                    <div class="flex gap-x-4">
+                        <i class="fa-solid fa-phone text-2xl mt-1 text-[#2563EB]"></i>
+                        <div>
+                            <div class="font-medium">WhatsApp</div>
+                            <a href="https://wa.me/6287764946693" class="text-[#2563EB]">+62 877-6494-6693</a>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-4">
+                        <i class="fa-solid fa-envelope text-2xl mt-1 text-[#2563EB]"></i>
+                        <div>
+                            <div class="font-medium">Email</div>
+                            <a href="mailto:datascience354@gmail.com" class="text-[#2563EB]">datascience354@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <form onsubmit="handleSubmit(event)" class="space-y-6 bg-white p-10 rounded-3xl shadow" data-aos="fade-left">
+                <div class="grid grid-cols-2 gap-6">
+                    <input id="name" type="text" placeholder="Nama Lengkap"
+                           class="border border-gray-200 focus:border-[#2563EB] rounded-2xl px-6 py-4 outline-none">
+                    <input id="email" type="email" placeholder="Email"
+                           class="border border-gray-200 focus:border-[#2563EB] rounded-2xl px-6 py-4 outline-none">
+                </div>
+                <input id="phone" type="tel" placeholder="Nomor WhatsApp"
+                       class="w-full border border-gray-200 focus:border-[#2563EB] rounded-2xl px-6 py-4 outline-none">
+
+                <select id="project-type" class="w-full border border-gray-200 focus:border-[#2563EB] rounded-2xl px-6 py-4 outline-none">
+                    <option value="">Jenis Proyek</option>
+                    <option value="website">Website</option>
+                    <option value="app">Aplikasi Mobile</option>
+                    <option value="webapp">Web Application</option>
+                    <option value="ai">AI Solution</option>
+                    <option value="student">Portfolio Pelajar/Mahasiswa</option>
+                </select>
+
+                <textarea id="message" rows="5" placeholder="Ceritakan proyek Anda..."
+                          class="w-full border border-gray-200 focus:border-[#2563EB] rounded-3xl px-6 py-4 outline-none"></textarea>
+
+                <button type="submit"
+                        class="w-full bg-[#2563EB] hover:bg-blue-700 py-5 rounded-3xl text-white font-semibold text-lg">
+                    Kirim Pesan
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0F172A] text-white/80 py-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-y-12">
+            <div>
+                <div class="flex items-center gap-x-3 mb-6">
+                    <img src="logo.png" alt="NexusDev Logo" class="w-9 h-9 rounded-full object-cover border-2 border-blue-500">
+                    <span class="heading-font text-3xl font-bold tracking-tighter">NexusDev</span>
+                </div>
+                <p class="text-sm max-w-xs">Membangun masa depan digital Indonesia satu proyek pada satu waktu.</p>
+            </div>
+
+            <div>
+                <div class="font-medium mb-6 text-white">Quick Links</div>
+                <div class="space-y-3 text-sm">
+                    <a href="#services" class="block hover:text-white">Layanan</a>
+                    <a href="#portfolio" class="block hover:text-white">Portfolio</a>
+                    <a href="#pricing" class="block hover:text-white">Harga</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="font-medium mb-6 text-white">Company</div>
+                <div class="space-y-3 text-sm">
+                    <a href="#about" class="block hover:text-white">Tentang Kami</a>
+                    <a href="#" class="block hover:text-white">Blog</a>
+                    <a href="#" class="block hover:text-white">Karir</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="font-medium mb-6 text-white">Connect</div>
+                <div class="flex gap-x-5 text-2xl">
+                    <a href="#" class="hover:text-[#38BDF8]"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-[#38BDF8]"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-[#38BDF8]"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <div class="mt-8 text-sm">
+                    © 2026 NexusDev. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/6287764946693" target="_blank" rel="noopener"
+       class="fab-wa fixed bottom-6 right-6 z-40 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- CONSULTATION MODAL -->
+    <div id="consult-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]">
+        <div class="bg-white rounded-3xl max-w-lg w-full mx-4 p-8">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-2xl font-semibold">Konsultasi Gratis</h3>
+                <button onclick="hideConsultModal()" class="text-3xl leading-none">&times;</button>
+            </div>
+            <form onsubmit="handleConsult(event)" class="space-y-6">
+                <input type="text" id="modal-name" placeholder="Nama Anda" class="w-full rounded-2xl border px-6 py-4">
+                <input type="tel" id="modal-phone" placeholder="Nomor WhatsApp" class="w-full rounded-2xl border px-6 py-4">
+                <textarea id="modal-message" rows="4" placeholder="Apa yang bisa kami bantu?" class="w-full rounded-3xl border px-6 py-4"></textarea>
+                <button type="submit" class="w-full bg-[#2563EB] text-white py-4 rounded-3xl font-semibold">Kirim &amp; Hubungi Saya</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- AOS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Init AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 80,
+            mirror: false
+        });
+
+        function navigateTo(section) {
+            document.getElementById(section).scrollIntoView({ behavior: "smooth" });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.getElementById('mobile-menu-button').addEventListener('click', toggleMobileMenu);
+
+        // Animate stats
+        function animateValue(id, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                document.getElementById(id).textContent = value + (id === 'stat2' ? '%' : '+');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Trigger stats animation when scrolled into view
+        window.addEventListener('scroll', () => {
+            const statsSection = document.getElementById('home');
+            if (window.scrollY > 300) {
+                animateValue('stat1', 0, 150, 1500);
+                animateValue('stat2', 0, 98, 1600);
+                animateValue('stat3', 0, 24, 1400);
+                animateValue('stat4', 0, 7, 1300);
+                window.removeEventListener('scroll', this);
+            }
+        });
+
+        function showConsultModal() {
+            document.getElementById('consult-modal').classList.remove('hidden');
+        }
+
+        function hideConsultModal() {
+            document.getElementById('consult-modal').classList.add('hidden');
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert("Terima kasih! Pesan Anda telah kami terima. Tim kami akan menghubungi segera.");
+            e.target.reset();
+        }
+
+        function handleConsult(e) {
+            e.preventDefault();
+            alert("Konsultasi berhasil dikirim! Kami akan menghubungi Anda via WhatsApp dalam 24 jam.");
+            hideConsultModal();
+        }
+
+        // Keyboard escape for modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                const modal = document.getElementById('consult-modal');
+                if (!modal.classList.contains('hidden')) hideConsultModal();
+            }
+        });
+
+        // Refresh AOS on window resize (helps if content shifts, e.g. mobile menu)
+        window.addEventListener('resize', () => AOS.refresh());
+
+        // Initialize
+        console.log('%cNexusDev Website Ready 🚀', 'color: #2563EB; font-size: 14px; font-weight: bold');
+    </script>
+</body>
+</html>
