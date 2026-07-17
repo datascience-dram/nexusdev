@@ -96,6 +96,30 @@
         .fab-wa:hover {
             transform: scale(1.08);
         }
+
+        /* Avatar initials */
+        .avatar-initial {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* FAQ accordion */
+        .faq-item summary {
+            cursor: pointer;
+            list-style: none;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item[open] .faq-chevron {
+            transform: rotate(180deg);
+        }
+        .faq-chevron {
+            transition: transform 0.3s ease;
+        }
     </style>
 </head>
 <body class="tail-container bg-[#F8FAFC] text-[#1E293B]">
@@ -125,7 +149,7 @@
                     <a href="#services" onclick="navigateTo('services')" class="nav-link text-[#1E293B]">Layanan</a>
                     <a href="#portfolio" onclick="navigateTo('portfolio')" class="nav-link text-[#1E293B]">Portfolio</a>
                     <a href="#pricing" onclick="navigateTo('pricing')" class="nav-link text-[#1E293B]">Harga</a>
-                    <a href="#about" onclick="navigateTo('about')" class="nav-link text-[#1E293B]">Tentang</a>
+                    <a href="#faq" onclick="navigateTo('faq')" class="nav-link text-[#1E293B]">FAQ</a>
                     <a href="#contact" onclick="navigateTo('contact')" class="nav-link text-[#1E293B]">Kontak</a>
                 </div>
 
@@ -151,7 +175,7 @@
                 <a href="#services" onclick="navigateTo('services');toggleMobileMenu()" class="nav-link">Layanan</a>
                 <a href="#portfolio" onclick="navigateTo('portfolio');toggleMobileMenu()" class="nav-link">Portfolio</a>
                 <a href="#pricing" onclick="navigateTo('pricing');toggleMobileMenu()" class="nav-link">Harga</a>
-                <a href="#about" onclick="navigateTo('about');toggleMobileMenu()" class="nav-link">Tentang Kami</a>
+                <a href="#faq" onclick="navigateTo('faq');toggleMobileMenu()" class="nav-link">FAQ</a>
                 <a href="#contact" onclick="navigateTo('contact');toggleMobileMenu()" class="nav-link">Kontak</a>
             </div>
         </div>
@@ -192,7 +216,7 @@
                 <div class="flex items-center gap-x-8 text-sm">
                     <div class="flex items-center gap-x-2">
                         <i class="fa-solid fa-check text-[#38BDF8]"></i>
-                        <span>100+ Proyek</span>
+                        <span>50+ Proyek</span>
                     </div>
                     <div class="flex items-center gap-x-2">
                         <i class="fa-solid fa-check text-[#38BDF8]"></i>
@@ -221,7 +245,7 @@
         <!-- Stats -->
         <div class="max-w-7xl mx-auto px-6 mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div class="text-center" data-aos="fade-up" data-aos-delay="0">
-                <div id="stat1" class="stat-number text-5xl font-semibold heading-font text-white">150</div>
+                <div id="stat1" class="stat-number text-5xl font-semibold heading-font text-white">50</div>
                 <div class="text-gray-400 mt-1">Project Selesai</div>
             </div>
             <div class="text-center" data-aos="fade-up" data-aos-delay="100">
@@ -239,17 +263,35 @@
         </div>
     </section>
 
-    <!-- CLIENT LOGOS -->
+    <!-- INDUSTRIES WE SERVE -->
     <section class="py-12 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <p class="text-center text-sm uppercase tracking-widest text-gray-500 mb-8" data-aos="fade-up">Dipercaya oleh</p>
-            <div class="grid grid-cols-3 md:grid-cols-6 gap-8 opacity-60 grayscale" data-aos="fade-up" data-aos-delay="100">
-                <div class="flex justify-center"><span class="text-3xl font-bold">Koperasi</span></div>
-                <div class="flex justify-center"><span class="text-3xl font-bold">Sekolah</span></div>
-                <div class="flex justify-center"><span class="text-3xl font-bold">UMKM</span></div>
-                <div class="flex justify-center"><span class="text-3xl font-bold">Startup</span></div>
-                <div class="flex justify-center"><span class="text-3xl font-bold">RS</span></div>
-                <div class="flex justify-center"><span class="text-3xl font-bold">Cafe</span></div>
+            <p class="text-center text-sm uppercase tracking-widest text-gray-500 mb-8" data-aos="fade-up">Industri yang Kami Layani</p>
+            <div class="grid grid-cols-3 md:grid-cols-6 gap-8 opacity-70" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex flex-col items-center gap-y-2">
+                    <i class="fa-solid fa-people-group text-3xl text-gray-500"></i>
+                    <span class="text-xs text-gray-500 text-center">Koperasi</span>
+                </div>
+                <div class="flex flex-col items-center gap-y-2">
+                    <i class="fa-solid fa-school text-3xl text-gray-500"></i>
+                    <span class="text-xs text-gray-500 text-center">Sekolah</span>
+                </div>
+                <div class="flex flex-col items-center gap-y-2">
+                    <i class="fa-solid fa-store text-3xl text-gray-500"></i>
+                    <span class="text-xs text-gray-500 text-center">UMKM</span>
+                </div>
+                <div class="flex flex-col items-center gap-y-2">
+                    <i class="fa-solid fa-rocket text-3xl text-gray-500"></i>
+                    <span class="text-xs text-gray-500 text-center">Startup</span>
+                </div>
+                <div class="flex flex-col items-center gap-y-2">
+                    <i class="fa-solid fa-house-medical text-3xl text-gray-500"></i>
+                    <span class="text-xs text-gray-500 text-center">Klinik/RS</span>
+                </div>
+                <div class="flex flex-col items-center gap-y-2">
+                    <i class="fa-solid fa-mug-saucer text-3xl text-gray-500"></i>
+                    <span class="text-xs text-gray-500 text-center">Cafe</span>
+                </div>
             </div>
         </div>
     </section>
@@ -391,8 +433,8 @@
                         <span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full">Website</span>
                         <h4 class="font-semibold mt-4">Koperasi Maju Bersama</h4>
                         <p class="text-sm text-gray-500 mt-1">Company profile + sistem simpan pinjam</p>
-                        <button onclick="alert('Demo: koperasi.nexusdev.id (contoh)')"
-                                class="mt-6 w-full py-3 border border-gray-300 rounded-2xl text-sm font-medium hover:bg-gray-50">Lihat Demo</button>
+                        <button onclick="requestDemo('Koperasi Maju Bersama')"
+                                class="mt-6 w-full py-3 border border-gray-300 rounded-2xl text-sm font-medium hover:bg-gray-50">Tanya Detail &amp; Demo</button>
                     </div>
                 </div>
 
@@ -402,8 +444,8 @@
                         <span class="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full">Web App</span>
                         <h4 class="font-semibold mt-4">POS Cafe Rasa</h4>
                         <p class="text-sm text-gray-500 mt-1">Point of Sale + inventory management</p>
-                        <button onclick="alert('Demo: pos.nexusdev.id')"
-                                class="mt-6 w-full py-3 border border-gray-300 rounded-2xl text-sm font-medium hover:bg-gray-50">Lihat Demo</button>
+                        <button onclick="requestDemo('POS Cafe Rasa')"
+                                class="mt-6 w-full py-3 border border-gray-300 rounded-2xl text-sm font-medium hover:bg-gray-50">Tanya Detail &amp; Demo</button>
                     </div>
                 </div>
 
@@ -413,8 +455,8 @@
                         <span class="text-xs bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full">Mobile App</span>
                         <h4 class="font-semibold mt-4">Absensi Siswa</h4>
                         <p class="text-sm text-gray-500 mt-1">Aplikasi Flutter untuk sekolah</p>
-                        <button onclick="alert('Demo tersedia di Play Store')"
-                                class="mt-6 w-full py-3 border border-gray-300 rounded-2xl text-sm font-medium hover:bg-gray-50">Lihat Demo</button>
+                        <button onclick="requestDemo('Absensi Siswa')"
+                                class="mt-6 w-full py-3 border border-gray-300 rounded-2xl text-sm font-medium hover:bg-gray-50">Tanya Detail &amp; Demo</button>
                     </div>
                 </div>
             </div>
@@ -435,7 +477,7 @@
                     </div>
                     <p class="italic">"Website kami jadi jauh lebih profesional. Penjualan naik 3x lipat sejak launch!"</p>
                     <div class="mt-8 flex items-center gap-x-4">
-                        <div class="w-11 h-11 bg-gray-300 rounded-2xl"></div>
+                        <div class="w-11 h-11 bg-[#2563EB] rounded-2xl avatar-initial">SR</div>
                         <div>
                             <div class="font-semibold">Ibu Siti Rahayu</div>
                             <div class="text-sm text-gray-500">Owner, Toko Batik Pekalongan</div>
@@ -449,7 +491,7 @@
                     </div>
                     <p class="italic">"Sistem absensi sekolah kami sekarang sangat mudah digunakan. Tim NexusDev sangat responsif."</p>
                     <div class="mt-8 flex items-center gap-x-4">
-                        <div class="w-11 h-11 bg-gray-300 rounded-2xl"></div>
+                        <div class="w-11 h-11 bg-[#38BDF8] rounded-2xl avatar-initial">AF</div>
                         <div>
                             <div class="font-semibold">Pak Ahmad Fauzi</div>
                             <div class="text-sm text-gray-500">Kepala Sekolah SMAN 5</div>
@@ -463,7 +505,7 @@
                     </div>
                     <p class="italic">"Dashboard admin dan fitur AI-nya sangat membantu operasional kami sehari-hari."</p>
                     <div class="mt-8 flex items-center gap-x-4">
-                        <div class="w-11 h-11 bg-gray-300 rounded-2xl"></div>
+                        <div class="w-11 h-11 bg-emerald-600 rounded-2xl avatar-initial">RP</div>
                         <div>
                             <div class="font-semibold">Dr. Rina Pratiwi</div>
                             <div class="text-sm text-gray-500">Direktur, Klinik Sehat</div>
@@ -520,7 +562,7 @@
                 <div class="student-card border-2 border-dashed border-amber-400 rounded-3xl p-8 relative">
                     <div class="absolute -top-3 right-6 bg-amber-500 text-white text-xs px-4 py-1 rounded-full">TERLARIS PELAJAR</div>
                     <div class="text-amber-600 font-semibold">PORTFOLIO PELAJAR</div>
-                    <div class="text-4xl font-bold heading-font mt-2">Rp149.000</div>
+                    <div class="text-4xl font-bold heading-font mt-2">Rp119.000</div>
                     <p class="text-xs text-gray-500 mt-1">Khusus pelajar/mahasiswa • tunjukkan KTM/KTS</p>
                     <ul class="mt-8 space-y-3 text-sm">
                         <li>✓ 1 Halaman Portfolio</li>
@@ -530,8 +572,9 @@
                         <li>✓ Revisi 1x</li>
                         <li>✓ Selesai 2-3 Hari</li>
                     </ul>
-                    <button onclick="alert('Terima kasih! Paket Portfolio Pelajar dipilih. Siapkan KTM/KTS untuk verifikasi ya.')"
-                            class="mt-10 w-full py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-medium transition-all">
+                    <p class="mt-4 text-xs text-gray-500">Klik pesan, lalu kirim foto KTM/KTS via WhatsApp untuk verifikasi.</p>
+                    <button onclick="orderPackage('Portfolio Pelajar (Rp119.000)')"
+                            class="mt-4 w-full py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-medium transition-all">
                         Pesan Paket Pelajar
                     </button>
                 </div>
@@ -549,8 +592,9 @@
                         <li>✓ Revisi 2x</li>
                         <li>✓ Selesai 3-4 Hari</li>
                     </ul>
-                    <button onclick="alert('Terima kasih! Paket Portfolio Plus dipilih. Siapkan KTM/KTS untuk verifikasi ya.')"
-                            class="mt-10 w-full py-4 bg-gray-900 hover:bg-gray-800 text-white rounded-2xl font-medium transition-all">
+                    <p class="mt-4 text-xs text-gray-500">Klik pesan, lalu kirim foto KTM/KTS via WhatsApp untuk verifikasi.</p>
+                    <button onclick="orderPackage('Portfolio Plus (Rp249.000)')"
+                            class="mt-4 w-full py-4 bg-gray-900 hover:bg-gray-800 text-white rounded-2xl font-medium transition-all">
                         Pesan Paket Ini
                     </button>
                 </div>
@@ -566,7 +610,7 @@
                         <li>✓ Deploy Gratis</li>
                         <li>✓ Diskon Grup 5+ Orang</li>
                     </ul>
-                    <button onclick="alert('Kami akan hubungi untuk detail proyek tugas kampusmu')"
+                    <button onclick="orderPackage('Proyek Tugas Kampus (mulai Rp349.000)')"
                             class="mt-10 w-full py-4 bg-gray-900 hover:bg-gray-800 text-white rounded-2xl font-medium transition-all">
                         Konsultasi Tugas
                     </button>
@@ -577,80 +621,185 @@
             </p>
         </div>
 
-        <!-- Website Packages -->
-        <h3 class="text-3xl font-semibold heading-font mb-8" data-aos="fade-up">🌐 Website Development</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        <!-- Web Portfolio / Bisnis / Pribadi -->
+        <h3 class="text-3xl font-semibold heading-font mb-2" data-aos="fade-up">🌐 Web Portfolio / Bisnis / Pribadi</h3>
+        <p class="text-gray-500 mb-8" data-aos="fade-up">Mulai dari Rp144.900</p>
+        <div class="grid md:grid-cols-3 gap-8 mb-20">
 
-            <!-- Starter -->
+            <!-- Basic -->
             <div class="bg-white border border-gray-200 rounded-3xl p-8 hover:border-[#38BDF8] transition-all" data-aos="fade-up" data-aos-delay="0">
-                <div class="text-[#2563EB] font-semibold">STARTER</div>
-                <div class="text-4xl font-bold heading-font mt-2">Rp499.000</div>
+                <div class="text-[#2563EB] font-semibold">BASIC</div>
+                <div class="text-4xl font-bold heading-font mt-2">Rp144.900</div>
                 <ul class="mt-8 space-y-3 text-sm">
                     <li>✓ 1 Halaman</li>
+                    <li>✓ Template Pilihan</li>
                     <li>✓ Responsive</li>
                     <li>✓ WhatsApp Button</li>
-                    <li>✓ Contact Form</li>
-                    <li>✓ Basic SEO</li>
-                    <li>✓ Revisi 2x</li>
+                    <li>✓ Revisi 1x</li>
+                    <li>✓ Selesai 2-3 Hari</li>
                 </ul>
-                <button onclick="alert('Terima kasih! Paket Starter dipilih.')"
+                <button onclick="orderPackage('Web Basic (Rp144.900)')"
                         class="mt-10 w-full py-4 bg-gray-900 text-white rounded-2xl font-medium">
                     Pesan Sekarang
                 </button>
             </div>
 
-            <!-- Professional (Recommended) -->
+            <!-- Standard (Recommended) -->
             <div class="bg-white border-2 border-[#2563EB] rounded-3xl p-8 relative" data-aos="fade-up" data-aos-delay="100">
                 <div class="absolute -top-3 right-6 bg-[#2563EB] text-white text-xs px-4 py-1 rounded-full">RECOMMENDED</div>
-                <div class="text-[#2563EB] font-semibold">PROFESSIONAL</div>
-                <div class="text-4xl font-bold heading-font mt-2">Rp1.499.000</div>
+                <div class="text-[#2563EB] font-semibold">STANDARD</div>
+                <div class="text-4xl font-bold heading-font mt-2">Rp299.000</div>
                 <ul class="mt-8 space-y-3 text-sm">
-                    <li>✓ Hingga 7 Halaman</li>
-                    <li>✓ Admin Panel</li>
-                    <li>✓ Galeri + Blog</li>
-                    <li>✓ Google Maps</li>
-                    <li>✓ SEO Dasar</li>
-                    <li>✓ Revisi 5x</li>
+                    <li>✓ 2-3 Halaman</li>
+                    <li>✓ Custom Desain Ringan</li>
+                    <li>✓ Contact Form</li>
+                    <li>✓ Link Sosial Media</li>
+                    <li>✓ Revisi 2x</li>
+                    <li>✓ Selesai 3-4 Hari</li>
                 </ul>
-                <button onclick="alert('Terima kasih! Paket Professional dipilih.')"
+                <button onclick="orderPackage('Web Standard (Rp299.000)')"
                         class="mt-10 w-full py-4 bg-[#2563EB] text-white rounded-2xl font-medium">
                     Mulai Proyek
                 </button>
             </div>
 
-            <!-- Business -->
+            <!-- Premium -->
             <div class="bg-white border border-gray-200 rounded-3xl p-8 hover:border-[#38BDF8] transition-all" data-aos="fade-up" data-aos-delay="200">
-                <div class="text-[#2563EB] font-semibold">BUSINESS</div>
-                <div class="text-4xl font-bold heading-font mt-2">Rp2.499.000</div>
+                <div class="text-[#2563EB] font-semibold">PREMIUM</div>
+                <div class="text-4xl font-bold heading-font mt-2">Rp599.000</div>
                 <ul class="mt-8 space-y-3 text-sm">
-                    <li>✓ Hingga 15 Halaman</li>
-                    <li>✓ Dashboard Admin</li>
-                    <li>✓ CMS + Database</li>
-                    <li>✓ Optimasi Kecepatan</li>
-                    <li>✓ Maintenance 1 Bulan Gratis</li>
+                    <li>✓ Hingga 5 Halaman</li>
+                    <li>✓ Desain Full Custom</li>
+                    <li>✓ Animasi Ringan</li>
+                    <li>✓ SEO Dasar</li>
+                    <li>✓ Galeri / Blog</li>
+                    <li>✓ Revisi 3x</li>
                 </ul>
-                <button onclick="alert('Terima kasih!')"
+                <button onclick="orderPackage('Web Premium (Rp599.000)')"
                         class="mt-10 w-full py-4 bg-gray-900 text-white rounded-2xl font-medium">
                     Pilih Paket
                 </button>
             </div>
+        </div>
 
-            <!-- Enterprise -->
-            <div class="bg-white border border-gray-200 rounded-3xl p-8 hover:border-[#38BDF8] transition-all" data-aos="fade-up" data-aos-delay="300">
-                <div class="text-[#2563EB] font-semibold">ENTERPRISE</div>
-                <div class="text-4xl font-bold heading-font mt-2">Custom</div>
+        <!-- Aplikasi CRUD -->
+        <h3 class="text-3xl font-semibold heading-font mb-2" data-aos="fade-up">🗂️ Aplikasi Berbasis CRUD</h3>
+        <p class="text-gray-500 mb-8" data-aos="fade-up">Mulai dari Rp989.000</p>
+        <div class="grid md:grid-cols-3 gap-8 mb-20">
+
+            <!-- Basic -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 hover:border-[#38BDF8] transition-all" data-aos="fade-up" data-aos-delay="0">
+                <div class="text-[#2563EB] font-semibold">BASIC</div>
+                <div class="text-4xl font-bold heading-font mt-2">Rp989.000</div>
                 <ul class="mt-8 space-y-3 text-sm">
-                    <li>✓ Web Application</li>
-                    <li>✓ ERP / Sistem Internal</li>
-                    <li>✓ AI Integration</li>
-                    <li>✓ Multi User</li>
+                    <li>✓ 1 Modul Data (Input-Edit-Hapus)</li>
+                    <li>✓ Tanpa Login/Role</li>
+                    <li>✓ UI Sederhana</li>
+                    <li>✓ Cocok Tugas Kuliah/UMKM Kecil</li>
+                    <li>✓ Revisi 2x</li>
                 </ul>
-                <button onclick="alert('Kami akan hubungi untuk penawaran custom')"
+                <button onclick="orderPackage('Aplikasi CRUD Basic (Rp999.000)')"
                         class="mt-10 w-full py-4 bg-gray-900 text-white rounded-2xl font-medium">
-                    Hubungi Kami
+                    Pesan Sekarang
+                </button>
+            </div>
+
+            <!-- Standard (Recommended) -->
+            <div class="bg-white border-2 border-[#2563EB] rounded-3xl p-8 relative" data-aos="fade-up" data-aos-delay="100">
+                <div class="absolute -top-3 right-6 bg-[#2563EB] text-white text-xs px-4 py-1 rounded-full">RECOMMENDED</div>
+                <div class="text-[#2563EB] font-semibold">STANDARD</div>
+                <div class="text-4xl font-bold heading-font mt-2">Rp1.799.000</div>
+                <ul class="mt-8 space-y-3 text-sm">
+                    <li>✓ Multi-User + Login/Role</li>
+                    <li>✓ Dashboard Admin</li>
+                    <li>✓ Export Excel/PDF</li>
+                    <li>✓ 2-3 Modul Data</li>
+                    <li>✓ Revisi 3x</li>
+                </ul>
+                <button onclick="orderPackage('Aplikasi CRUD Standard (Rp1.799.000)')"
+                        class="mt-10 w-full py-4 bg-[#2563EB] text-white rounded-2xl font-medium">
+                    Mulai Proyek
+                </button>
+            </div>
+
+            <!-- Advanced -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 hover:border-[#38BDF8] transition-all" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-[#2563EB] font-semibold">ADVANCED</div>
+                <div class="text-4xl font-bold heading-font mt-2">Rp2.899.000</div>
+                <ul class="mt-8 space-y-3 text-sm">
+                    <li>✓ Multi-Modul Terintegrasi</li>
+                    <li>✓ Laporan &amp; Analitik</li>
+                    <li>✓ Notifikasi</li>
+                    <li>✓ Siap Deploy Production</li>
+                    <li>✓ Revisi 3x</li>
+                </ul>
+                <button onclick="orderPackage('Aplikasi CRUD Advanced (Rp2.899.000)')"
+                        class="mt-10 w-full py-4 bg-gray-900 text-white rounded-2xl font-medium">
+                    Diskusikan Kebutuhan
                 </button>
             </div>
         </div>
+
+        <!-- Aplikasi Prediksi AI -->
+        <h3 class="text-3xl font-semibold heading-font mb-2" data-aos="fade-up">🤖 Aplikasi Prediksi AI (Flask)</h3>
+        <p class="text-gray-500 mb-8" data-aos="fade-up">Mulai dari Rp989.000</p>
+        <div class="grid md:grid-cols-3 gap-8 mb-4">
+
+            <!-- Basic -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 hover:border-[#38BDF8] transition-all" data-aos="fade-up" data-aos-delay="0">
+                <div class="text-[#2563EB] font-semibold">BASIC</div>
+                <div class="text-4xl font-bold heading-font mt-2">Rp989.000</div>
+                <ul class="mt-8 space-y-3 text-sm">
+                    <li>✓ 1 Model Prediksi Sederhana</li>
+                    <li>✓ Input Manual</li>
+                    <li>✓ Output Angka/Label</li>
+                    <li>✓ Dataset Kecil Disediakan Klien</li>
+                    <li>✓ Revisi 2x</li>
+                </ul>
+                <button onclick="orderPackage('Aplikasi AI Flask Basic (Rp989.000)')"
+                        class="mt-10 w-full py-4 bg-gray-900 text-white rounded-2xl font-medium">
+                    Pesan Sekarang
+                </button>
+            </div>
+
+            <!-- Standard (Recommended) -->
+            <div class="bg-white border-2 border-[#2563EB] rounded-3xl p-8 relative" data-aos="fade-up" data-aos-delay="100">
+                <div class="absolute -top-3 right-6 bg-[#2563EB] text-white text-xs px-4 py-1 rounded-full">RECOMMENDED</div>
+                <div class="text-[#2563EB] font-semibold">STANDARD</div>
+                <div class="text-4xl font-bold heading-font mt-2">Rp1.899.000</div>
+                <ul class="mt-8 space-y-3 text-sm">
+                    <li>✓ Model Lebih Kompleks (RF/XGBoost)</li>
+                    <li>✓ Visualisasi Hasil (Grafik)</li>
+                    <li>✓ Upload Dataset Sendiri</li>
+                    <li>✓ API Endpoint</li>
+                    <li>✓ Revisi 3x</li>
+                </ul>
+                <button onclick="orderPackage('Aplikasi AI Flask Standard (Rp1.899.000)')"
+                        class="mt-10 w-full py-4 bg-[#2563EB] text-white rounded-2xl font-medium">
+                    Mulai Proyek
+                </button>
+            </div>
+
+            <!-- Advanced -->
+            <div class="bg-white border border-gray-200 rounded-3xl p-8 hover:border-[#38BDF8] transition-all" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-[#2563EB] font-semibold">ADVANCED</div>
+                <div class="text-4xl font-bold heading-font mt-2">Rp2.899.000</div>
+                <ul class="mt-8 space-y-3 text-sm">
+                    <li>✓ Multi-Model / Prediksi Real-Time</li>
+                    <li>✓ Integrasi API ke Aplikasi Lain</li>
+                    <li>✓ Deploy ke Cloud</li>
+                    <li>✓ Monitoring Dasar</li>
+                    <li>✓ Revisi 3x</li>
+                </ul>
+                <button onclick="orderPackage('Aplikasi AI Flask Advanced (Rp2.899.000)')"
+                        class="mt-10 w-full py-4 bg-gray-900 text-white rounded-2xl font-medium">
+                    Diskusikan Kebutuhan
+                </button>
+            </div>
+        </div>
+        <p class="text-center text-xs text-gray-500 mb-16">
+            * Harga berlaku untuk dataset yang sudah bersih & disediakan klien. Proyek dengan scope lebih besar (data besar, modul lebih banyak, integrasi kompleks) akan mendapat penawaran custom. Revisi tambahan di luar batas paket dikenakan biaya Rp50.000/revisi.
+        </p>
 
         <!-- Add Ons -->
         <h3 class="text-2xl font-semibold mb-6" data-aos="fade-up">🔧 Add-On</h3>
@@ -666,8 +815,61 @@
         </div>
     </div>
 </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 bg-[#F8FAFC]">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="uppercase tracking-widest text-blue-600 font-medium">Pertanyaan Umum</span>
+                <h2 class="heading-font text-5xl font-semibold mt-3">FAQ</h2>
+            </div>
+
+            <div class="space-y-4" data-aos="fade-up">
+                <details class="faq-item bg-white rounded-2xl p-6 border border-gray-100">
+                    <summary class="flex justify-between items-center font-semibold text-lg">
+                        Berapa lama proses pengerjaan?
+                        <i class="fa-solid fa-chevron-down faq-chevron text-gray-400"></i>
+                    </summary>
+                    <p class="mt-4 text-gray-600">Tergantung paket: paket pelajar 2-4 hari, Starter/Professional 5-10 hari kerja, Business/Enterprise disesuaikan dengan kompleksitas fitur dan akan disepakati di awal proyek.</p>
+                </details>
+
+                <details class="faq-item bg-white rounded-2xl p-6 border border-gray-100">
+                    <summary class="flex justify-between items-center font-semibold text-lg">
+                        Bagaimana kebijakan revisi?
+                        <i class="fa-solid fa-chevron-down faq-chevron text-gray-400"></i>
+                    </summary>
+                    <p class="mt-4 text-gray-600">Jumlah revisi mengikuti paket yang dipilih (tercantum di masing-masing paket). Revisi tambahan di luar batas dapat dikenakan biaya sesuai kesepakatan.</p>
+                </details>
+
+                <details class="faq-item bg-white rounded-2xl p-6 border border-gray-100">
+                    <summary class="flex justify-between items-center font-semibold text-lg">
+                        Siapa yang memegang source code setelah proyek selesai?
+                        <i class="fa-solid fa-chevron-down faq-chevron text-gray-400"></i>
+                    </summary>
+                    <p class="mt-4 text-gray-600">Setelah pembayaran lunas, source code dan hak pakai sepenuhnya diserahkan kepada klien. Kami tetap menyediakan opsi maintenance berbayar jika dibutuhkan.</p>
+                </details>
+
+                <details class="faq-item bg-white rounded-2xl p-6 border border-gray-100">
+                    <summary class="flex justify-between items-center font-semibold text-lg">
+                        Bagaimana sistem pembayaran?
+                        <i class="fa-solid fa-chevron-down faq-chevron text-gray-400"></i>
+                    </summary>
+                    <p class="mt-4 text-gray-600">Umumnya DP 50% di awal proyek dan pelunasan setelah proyek selesai dan disetujui klien. Detail dapat didiskusikan sesuai skala proyek.</p>
+                </details>
+
+                <details class="faq-item bg-white rounded-2xl p-6 border border-gray-100">
+                    <summary class="flex justify-between items-center font-semibold text-lg">
+                        Apakah ada garansi atau kebijakan komplain?
+                        <i class="fa-solid fa-chevron-down faq-chevron text-gray-400"></i>
+                    </summary>
+                    <p class="mt-4 text-gray-600">Kami menyediakan masa garansi perbaikan bug ringan pasca-launching (durasi mengikuti paket). Untuk keluhan di luar cakupan tersebut, silakan hubungi tim kami untuk didiskusikan.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <!-- CONTACT -->
-    <section id="contact" class="py-24 bg-[#F8FAFC]">
+    <section id="contact" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
             <div data-aos="fade-right">
                 <h2 class="heading-font text-5xl font-semibold">Mari Bangun Sesuatu yang Hebat</h2>
@@ -694,12 +896,12 @@
             <!-- Contact Form -->
             <form onsubmit="handleSubmit(event)" class="space-y-6 bg-white p-10 rounded-3xl shadow" data-aos="fade-left">
                 <div class="grid grid-cols-2 gap-6">
-                    <input id="name" type="text" placeholder="Nama Lengkap"
+                    <input id="name" type="text" placeholder="Nama Lengkap" required
                            class="border border-gray-200 focus:border-[#2563EB] rounded-2xl px-6 py-4 outline-none">
                     <input id="email" type="email" placeholder="Email"
                            class="border border-gray-200 focus:border-[#2563EB] rounded-2xl px-6 py-4 outline-none">
                 </div>
-                <input id="phone" type="tel" placeholder="Nomor WhatsApp"
+                <input id="phone" type="tel" placeholder="Nomor WhatsApp" required
                        class="w-full border border-gray-200 focus:border-[#2563EB] rounded-2xl px-6 py-4 outline-none">
 
                 <select id="project-type" class="w-full border border-gray-200 focus:border-[#2563EB] rounded-2xl px-6 py-4 outline-none">
@@ -715,9 +917,11 @@
                           class="w-full border border-gray-200 focus:border-[#2563EB] rounded-3xl px-6 py-4 outline-none"></textarea>
 
                 <button type="submit"
-                        class="w-full bg-[#2563EB] hover:bg-blue-700 py-5 rounded-3xl text-white font-semibold text-lg">
-                    Kirim Pesan
+                        class="w-full bg-[#2563EB] hover:bg-blue-700 py-5 rounded-3xl text-white font-semibold text-lg flex items-center justify-center gap-x-3">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    Kirim via WhatsApp
                 </button>
+                <p class="text-xs text-gray-400 text-center">Dengan mengirim form ini, Anda akan diarahkan ke WhatsApp kami. Data yang Anda isi hanya digunakan untuk keperluan komunikasi proyek dan tidak dibagikan ke pihak ketiga.</p>
             </form>
         </div>
     </section>
@@ -739,6 +943,7 @@
                     <a href="#services" class="block hover:text-white">Layanan</a>
                     <a href="#portfolio" class="block hover:text-white">Portfolio</a>
                     <a href="#pricing" class="block hover:text-white">Harga</a>
+                    <a href="#faq" class="block hover:text-white">FAQ</a>
                 </div>
             </div>
 
@@ -779,10 +984,14 @@
                 <button onclick="hideConsultModal()" class="text-3xl leading-none">&times;</button>
             </div>
             <form onsubmit="handleConsult(event)" class="space-y-6">
-                <input type="text" id="modal-name" placeholder="Nama Anda" class="w-full rounded-2xl border px-6 py-4">
-                <input type="tel" id="modal-phone" placeholder="Nomor WhatsApp" class="w-full rounded-2xl border px-6 py-4">
+                <input type="text" id="modal-name" placeholder="Nama Anda" required class="w-full rounded-2xl border px-6 py-4">
+                <input type="tel" id="modal-phone" placeholder="Nomor WhatsApp" required class="w-full rounded-2xl border px-6 py-4">
                 <textarea id="modal-message" rows="4" placeholder="Apa yang bisa kami bantu?" class="w-full rounded-3xl border px-6 py-4"></textarea>
-                <button type="submit" class="w-full bg-[#2563EB] text-white py-4 rounded-3xl font-semibold">Kirim &amp; Hubungi Saya</button>
+                <button type="submit" class="w-full bg-[#2563EB] text-white py-4 rounded-3xl font-semibold flex items-center justify-center gap-x-3">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    Kirim &amp; Hubungi via WhatsApp
+                </button>
+                <p class="text-xs text-gray-400 text-center">Data hanya digunakan untuk komunikasi proyek Anda dan tidak dibagikan ke pihak ketiga.</p>
             </form>
         </div>
     </div>
@@ -798,6 +1007,8 @@
             offset: 80,
             mirror: false
         });
+
+        const WA_NUMBER = '6287764946693';
 
         function navigateTo(section) {
             document.getElementById(section).scrollIntoView({ behavior: "smooth" });
@@ -829,7 +1040,7 @@
         window.addEventListener('scroll', () => {
             const statsSection = document.getElementById('home');
             if (window.scrollY > 300) {
-                animateValue('stat1', 0, 150, 1500);
+                animateValue('stat1', 0, 50, 1500);
                 animateValue('stat2', 0, 98, 1600);
                 animateValue('stat3', 0, 24, 1400);
                 animateValue('stat4', 0, 7, 1300);
@@ -845,16 +1056,53 @@
             document.getElementById('consult-modal').classList.add('hidden');
         }
 
+        function openWhatsApp(message) {
+            const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank', 'noopener');
+        }
+
+        function requestDemo(projectName) {
+            openWhatsApp(`Halo NexusDev, saya ingin tanya detail & demo untuk proyek "${projectName}".`);
+        }
+
+        function orderPackage(packageName) {
+            openWhatsApp(`Halo NexusDev, saya ingin memesan paket "${packageName}".`);
+        }
+
         function handleSubmit(e) {
             e.preventDefault();
-            alert("Terima kasih! Pesan Anda telah kami terima. Tim kami akan menghubungi segera.");
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const projectType = document.getElementById('project-type');
+            const projectTypeLabel = projectType.options[projectType.selectedIndex]?.text || '-';
+            const message = document.getElementById('message').value.trim();
+
+            let text = `Halo NexusDev, saya ingin konsultasi proyek.\n\n`;
+            text += `Nama: ${name}\n`;
+            if (email) text += `Email: ${email}\n`;
+            text += `No. WhatsApp: ${phone}\n`;
+            text += `Jenis Proyek: ${projectTypeLabel}\n`;
+            if (message) text += `Pesan: ${message}`;
+
+            openWhatsApp(text);
             e.target.reset();
         }
 
         function handleConsult(e) {
             e.preventDefault();
-            alert("Konsultasi berhasil dikirim! Kami akan menghubungi Anda via WhatsApp dalam 24 jam.");
+            const name = document.getElementById('modal-name').value.trim();
+            const phone = document.getElementById('modal-phone').value.trim();
+            const message = document.getElementById('modal-message').value.trim();
+
+            let text = `Halo NexusDev, saya ingin konsultasi gratis.\n\n`;
+            text += `Nama: ${name}\n`;
+            text += `No. WhatsApp: ${phone}\n`;
+            if (message) text += `Pesan: ${message}`;
+
+            openWhatsApp(text);
             hideConsultModal();
+            e.target.reset();
         }
 
         // Keyboard escape for modal
